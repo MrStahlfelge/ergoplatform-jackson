@@ -28,5 +28,5 @@ public class ErgoAuthRequest {
 
     public String replyTo;
 
-    enum Severity {NONE, INFORMATION, WARNING, ERROR}
+    public enum Severity {NONE, INFORMATION, WARNING, ERROR}
 }
