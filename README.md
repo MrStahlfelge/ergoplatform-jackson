@@ -13,7 +13,7 @@ is in your repositories list:
 		}
 	}
 
-Add each library module like follows:
+Add the library like follows:
 
-    implementation 'com.github.MrStahlfelge:ergoplatform-jackson:develop-SNAPSHOT'
+    implementation 'com.github.MrStahlfelge:ergoplatform-jackson:$version'
 
