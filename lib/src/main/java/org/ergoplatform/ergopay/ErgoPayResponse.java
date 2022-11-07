@@ -2,6 +2,8 @@ package org.ergoplatform.ergopay;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 /**
@@ -50,4 +52,30 @@ public class ErgoPayResponse {
     public String replyTo;
 
     public enum Severity {NONE, INFORMATION, WARNING, ERROR}
+
+    //********************************************************************************************//
+    // EXTENSIONS                                                                                 //
+    // The following fields are optional or alternative fields to fields above.                   //
+    //********************************************************************************************//
+
+    /**
+     * List of addresses to sign the transaction with.
+     * Do not set this field when {@link #address} field was set - you must not set both fields.
+     * Also check if requesting wallet app supports the addresses field by checking
+     * {@link ErgoPayConstants#HEADER_KEY_MULTIPLE_ADDRESSES} header field.
+     * Note: Restrictions regarding multi-signing might apply from wallet to wallet.
+     */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Nullable
+    public List<String> addresses;
+
+    /**
+     * List of base64url encoded reduced transactions.
+     * Do not set this field when {@link #reducedTx} field was set - you must not set both fields.
+     * Also check if requesting wallet app supports the txList field by checking
+     * {@link ErgoPayConstants#HEADER_KEY_MULTIPLE_TX} header field.
+     */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Nullable
+    public List<String> reducedTxList;
 }
